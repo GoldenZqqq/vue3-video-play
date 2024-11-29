@@ -1,6 +1,6 @@
 {
   "name": "goldenzqqq-vue3-video-play",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "hls.js player component for Vue3",
   "files": [
     "dist",
