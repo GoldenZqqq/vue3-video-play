@@ -51,13 +51,29 @@ else if (confirm.trim().toLowerCase() == 's') {
     shell.exit()
 }
 
-shell.exec('pnpm build');
+// 清理之前的构建文件
+shell.rm('-rf', 'dist');
 
-if (shell.exec('npm pub').code != 0) {
-    shell.echo("\033[1;31mError: npm publish 失败! 已退出\033[0m");
-    shell.exit()
-    return
+// 执行构建
+if (shell.exec('pnpm build').code !== 0) {
+    errorLog('构建失败！');
+    shell.exit(1);
+    return;
 }
-// shell.echo("\033[1;32mSuccess Publish success!\033[0m");
-successLog('Publish success!')
-shell.exit()
+
+// 检查 dist 文件夹是否存在
+if (!shell.test('-d', 'dist')) {
+    errorLog('dist 文件夹不存在，构建可能失败！');
+    shell.exit(1);
+    return;
+}
+
+// 发布到 npm
+if (shell.exec('npm publish').code !== 0) {
+    errorLog('npm publish 失败! 已退出');
+    shell.exit(1);
+    return;
+}
+
+successLog('发布成功!')
+shell.exit(0)

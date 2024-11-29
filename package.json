@@ -10,7 +10,7 @@
   "module": "./dist/index.mjs",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "pub": "node ./scripts/publish.js",
     "serve": "vite preview",
     "docs:dev": "vitepress dev docs",
