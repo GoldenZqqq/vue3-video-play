@@ -31,7 +31,7 @@
       <!-- 播放错误 -->
       <span v-show="loadType == 'error' || loadType == 'stalled'">
         <p @click="replayHandle" class="d-flex-x d-pointer">
-          <i class="iconfont icon-replay f24 mr5"></i>请求错误
+          <i class="iconfont icon-replay f24 mr5"></i>
         </p>
       </span>
     </div>
